@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sorry Angry Bird ❤️</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .heart {
+      position: fixed;
+      color: red;
+      font-size: 14px;
+      animation: fall linear infinite;
+      top: -20px;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    .start-button {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: pink;
+      color: black;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 20px;
+      font-family: 'Pacifico', cursive;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 0 15px hotpink;
+    }
+
+    .content {
+      display: none;
+      color: white;
+      text-align: center;
+      padding-top: 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sorry-text {
+      font-size: 36px;
+      font-family: 'Pacifico', cursive;
+      color: hotpink;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .slideshow {
+      max-width: 90%;
+      margin: 30px auto;
+      display: none;
+    }
+
+    .slide {
+      display: none;
+      animation: fadeTilt 2s;
+    }
+
+    @keyframes fadeTilt {
+      from {
+        opacity: 0;
+        transform: rotate(-2deg) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: rotate(2deg) scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .caption {
+      margin-top: 20px;
+      font-size: 24px;
+      font-family: 'Pacifico', cursive;
+      color: pink;
+      animation: moveText 2s infinite alternate;
+    }
+
+    @keyframes moveText {
+      0% { letter-spacing: 1px; }
+      100% { letter-spacing: 4px; }
+    }
+
+    .sparkle-border {
+      border: 5px solid pink;
+      box-shadow: 0 0 15px pink, 0 0 30px pink, 0 0 45px hotpink;
+      border-radius: 20px;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="/ReelAudio-35569.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Start Button -->
+  <button class="start-button" onclick="startStory()">Click here to start</button>
+
+  <!-- Main Content -->
+  <div class="content" id="story">
+    <div class="sorry-text" id="sorryText">I'm sorry angry bird🥺</div>
+
+    <div class="slideshow" id="slideshow">
+      <div class="slide">
+        <img src="/IMG_20250613_210606.jpg" alt="pic1" class="sparkle-border" style="width: 80%;">
+        <div class="caption">Tere dar pe✨</div>
+      </div>
+      <div class="slide">
+        <img src="/IMG_20250613_210623.jpg" alt="pic2" class="sparkle-border" style="width: 80%;">
+        <div class="caption">roz hi aake🥀</div>
+      </div>
+      <div class="slide">
+        <img src="/IMG_20250613_213541.jpg" alt="pic3" class="sparkle-border" style="width: 80%;">
+        <div class="caption">dungi dastak sun to💕</div>
+      </div>
+      <div class="slide">
+        <img src="/IMG_20250613_210525.jpg" alt="pic4" class="sparkle-border" style="width: 80%;">
+        <div class="caption">chahe na bhi karoge tum to🥺</div>
+      </div>
+      <div class="slide">
+        <img src="/9337f8e9-7ad8-4cdd-9a85-6cd19066a36f.jpeg" alt="pic5" class="sparkle-border" style="width: 80%;">
+        <div class="caption">ummed rahegi mujhko💝</div>
+      </div>
+      <div class="slide">
+        <img src="/IMG_20250613_210442.jpg" alt="pic6" class="sparkle-border" style="width: 80%;">
+        <div class="caption">janne kaise...</div>
+      </div>
+      <div class="slide">
+        <img src="/IMG_20250613_210404.jpg" alt="pic7" class="sparkle-border" style="width: 80%;">
+        <div class="caption">sheeh se maat maat🤍</div>
+      </div>
+      <div class="slide">
+        <img src="/IMG_20250613_210341.jpg" alt="pic8" class="sparkle-border" style="width: 80%;">
+        <div class="caption">sheeh se ho rha hu💌</div>
+      </div>
+      <div class="slide">
+        <img src="/IMG_20250613_210321.jpg" alt="pic9" class="sparkle-border" style="width: 80%;">
+        <div class="caption">tu pooch nahio haal fakira da...🕊️</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Falling hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "♥️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 10 + 10) + "px";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 150);
+
+    // Start story
+    function startStory() {
+      document.querySelector(".start-button").style.display = "none";
+      const story = document.getElementById("story");
+      const music = document.getElementById("bg-music");
+      story.style.display = "block";
+      music.play();
+
+      setTimeout(() => {
+        document.getElementById("slideshow").style.display = "block";
+        showSlides();
+      }, 3000);
+    }
+
+    // Slideshow control
+    let slideIndex = 0;
+    function showSlides() {
+      const slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      slideIndex++;
+      if (slideIndex > slides.length) return;
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 2560); // 2.6 seconds per slide
+    }
+  </script>
+
+</body>
+</html>
